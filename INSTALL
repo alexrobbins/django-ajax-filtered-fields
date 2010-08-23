@@ -1,0 +1,7 @@
+To install django-ajax-filtered-field, run the following command 
+inside this directory:
+
+    python setup.py install
+
+Or if you'd prefer you can simply place the included ``ajax_filtered_fields``
+package on your Python path.

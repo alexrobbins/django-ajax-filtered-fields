@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.6: http://docutils.sourceforge.net/" />
+<title>Ajax Filtered Fields</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:Date: $Date: 2005-05-26 12:51:39 +0200 (Thu, 26 May 2005) $
+:Version: $Revision: 3368 $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+*/
+
+/* "! important" is used here to override other ``margin-top`` and
+   ``margin-bottom`` styles that are later in the stylesheet or 
+   more specific.  See http://www.w3.org/TR/CSS1#the-cascade */
+.first {
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+a[href]:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em }
+
+div.footer, div.header {
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin-left: 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.line-block {
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eeeeee }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (<h#> element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid thin gray }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid thin black }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+/*
+tt.docutils {
+  background-color: #eeeeee }
+*/
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="ajax-filtered-fields">
+<h1 class="title">Ajax Filtered Fields</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr class="field"><th class="docinfo-name">Author:</th><td class="field-body">Francesco Banconi &lt;<a class="reference external" href="mailto:francesco.banconi&#64;gmail.com">francesco.banconi&#64;gmail.com</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<div class="contents topic" id="index">
+<p class="topic-title first">Index</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#introduction" id="id1">1&nbsp;&nbsp;&nbsp;Introduction</a><ul class="auto-toc">
+<li><a class="reference internal" href="#technical-details" id="id2">1.1&nbsp;&nbsp;&nbsp;Technical details</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation" id="id3">2&nbsp;&nbsp;&nbsp;Installation</a></li>
+<li><a class="reference internal" href="#usage" id="id4">3&nbsp;&nbsp;&nbsp;Usage</a></li>
+<li><a class="reference internal" href="#available-fields" id="id5">4&nbsp;&nbsp;&nbsp;Available fields</a><ul class="auto-toc">
+<li><a class="reference internal" href="#ajaxmanytomanyfield" id="id6">4.1&nbsp;&nbsp;&nbsp;AjaxManyToManyField</a></li>
+<li><a class="reference internal" href="#manytomanybyletter" id="id7">4.2&nbsp;&nbsp;&nbsp;ManyToManyByLetter</a></li>
+<li><a class="reference internal" href="#manytomanybystatus" id="id8">4.3&nbsp;&nbsp;&nbsp;ManyToManyByStatus</a></li>
+<li><a class="reference internal" href="#manytomanybyrelatedfield" id="id9">4.4&nbsp;&nbsp;&nbsp;ManyToManyByRelatedField</a></li>
+<li><a class="reference internal" href="#ajaxforeignkeyfield" id="id10">4.5&nbsp;&nbsp;&nbsp;AjaxForeignKeyField</a></li>
+<li><a class="reference internal" href="#foreignkeybyletter" id="id11">4.6&nbsp;&nbsp;&nbsp;ForeignKeyByLetter</a></li>
+<li><a class="reference internal" href="#foreignkeybystatus" id="id12">4.7&nbsp;&nbsp;&nbsp;ForeignKeyByStatus</a></li>
+<li><a class="reference internal" href="#foreignkeybyrelatedfield" id="id13">4.8&nbsp;&nbsp;&nbsp;ForeignKeyByRelatedField</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#settings" id="id14">5&nbsp;&nbsp;&nbsp;Settings</a></li>
+<li><a class="reference internal" href="#javascript-events" id="id15">6&nbsp;&nbsp;&nbsp;Javascript Events</a></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h1><a class="toc-backref" href="#id1">1&nbsp;&nbsp;&nbsp;Introduction</a></h1>
+<p>Theese fields may be used in a <strong>many to many</strong> or <strong>foreign key</strong> relation,
+where the user may want to apply filters to the listed objects,
+because of they being too many, or just for usability reasons.</p>
+<div class="section" id="technical-details">
+<h2><a class="toc-backref" href="#id2">1.1&nbsp;&nbsp;&nbsp;Technical details</a></h2>
+<p>When the user clicks on the chosen filter, an <em>Ajax</em> request is sent. It
+returns the matching elements in <em>JSON</em> format. The <em>jQuery</em> Javascript
+library is used.</p>
+</div>
+</div>
+<div class="section" id="installation">
+<h1><a class="toc-backref" href="#id3">2&nbsp;&nbsp;&nbsp;Installation</a></h1>
+<p>The <tt class="docutils literal"><span class="pre">ajax_filtered_fields</span></tt> package, included in the distribution, should be
+placed on the <em>Python path</em>.</p>
+</div>
+<div class="section" id="usage">
+<h1><a class="toc-backref" href="#id4">3&nbsp;&nbsp;&nbsp;Usage</a></h1>
+<p>As a usage example, let's put the <em>MyModel</em> model in a many to many relation
+with the <em>RelatedModel</em> one, via the <tt class="docutils literal"><span class="pre">related_models</span></tt> field.</p>
+<ol class="arabic">
+<li><p class="first">copy to your media directory the Javascript file <strong>ajax_filtered_fields.js</strong>
+included in <tt class="docutils literal"><span class="pre">media/js/</span></tt> within the distribution;</p>
+</li>
+<li><p class="first">add this line to your Django project's <tt class="docutils literal"><span class="pre">urls.py</span></tt>:</p>
+<pre class="literal-block">
+(r'^ajax_filtered_fields/', include('ajax_filtered_fields.urls')),
+</pre>
+</li>
+<li><p class="first">in the model <strong>form</strong>, choose the field you want to use, reference
+the formerly copied Javascript file, the jQuery library and the
+<em>django admin</em>'s Javascript code that mutates the <em>select</em> widget into
+a <em>selectfilter</em> one:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import AjaxManyToManyField
+from django.conf import settings
+
+    class MyModelForm(forms.ModelForm):
+        # lookups explained below
+        related_objects = AjaxManyToManyField(RelatedModel, lookups)
+
+        class Meta:
+            model = Model
+
+        class Media:
+            js = (
+                settings.ADMIN_MEDIA_PREFIX + &quot;js/SelectBox.js&quot;,
+                settings.ADMIN_MEDIA_PREFIX + &quot;js/SelectFilter2.js&quot;,
+                '/path/to/javascripts/jquery.js',
+                '/path/to/javascripts/ajax_filtered_fields.js',
+            )
+</pre>
+</li>
+<li><p class="first">if the form is being used outside of the auto generated django admin, you
+have to load several <em>django admin</em>'s Javascript files from the page where
+the field will be shown:</p>
+<pre class="literal-block">
+{% load adminmedia %}
+&lt;script type=&quot;text/javascript&quot; src=&quot;/admin/jsi18n/&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;{% admin_media_prefix %}js/core.js&quot;&gt;&lt;/script&gt;
+</pre>
+</li>
+<li><p class="first">if your form is used by <strong>non-staff users</strong> (e.g. in the frontend of your site)
+then <tt class="docutils literal"><span class="pre">&lt;script</span> <span class="pre">type=&quot;text/javascript&quot;</span> <span class="pre">src=&quot;/admin/jsi18n/&quot;&gt;&lt;/script&gt;</span></tt> will
+not work (due to permission problems).</p>
+<p>A simple work around to resolve the problem is to directly point a
+url to the view by including the following line in the urls.py:</p>
+<pre class="literal-block">
+(r'^dynamic-media/jsi18n/$', 'django.views.i18n.javascript_catalog'),
+or
+(r'^dynamic-media/jsi18n/$', 'django.views.i18n.null_javascript_catalog'),
+</pre>
+<p>depending on whether or not you use the i18n</p>
+<p>and then referencing the new url in place of
+<tt class="docutils literal"><span class="pre">admin/jsi18n/</span></tt> in the page where you need an ajax filtered field.</p>
+</li>
+<li><p class="first">if you want <strong>i18n</strong> for <em>ManyToManyByLetter</em>, <em>ForeignKeyByLetter</em>,
+<em>ManyToManyByStatus</em>, <em>ForeignKeyByStatus</em>, <em>ManyToManyByRelatedField</em> and
+<em>ForeignKeyByRelatedField</em> fields
+(see below for details about available fields), add <tt class="docutils literal"><span class="pre">'ajax_filtered_fields'</span></tt>
+to the <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> in your <em>settings.py</em>. The only languages currently
+available are English and Italian.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="available-fields">
+<h1><a class="toc-backref" href="#id5">4&nbsp;&nbsp;&nbsp;Available fields</a></h1>
+<div class="section" id="ajaxmanytomanyfield">
+<h2><a class="toc-backref" href="#id6">4.1&nbsp;&nbsp;&nbsp;AjaxManyToManyField</a></h2>
+<p>Base many to many form field class that displays filter choices using
+jQuery Ajax requests.</p>
+<p><strong>Usage</strong>:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import AjaxManyToManyField
+# in the form
+related_objects = AjaxManyToManyField(
+    model, lookups, default_index=0, select_related=None, *args, **kwargs)
+</pre>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><p class="first"><em>model</em>: the related model</p>
+</li>
+<li><p class="first"><em>lookups</em>: a sequence of <tt class="docutils literal"><span class="pre">(label,</span> <span class="pre">lookup_dict)</span></tt> specifying object
+filtering, e.g.:</p>
+<pre class="literal-block">
+(
+    ('active', {'is_active': True}),
+    ('inactive', {'is_active': False}),
+)
+</pre>
+<p>you may specify what you want in <tt class="docutils literal"><span class="pre">lookup_dict</span></tt>, give multiple filter
+lookups for the same choice and also set a choice that gets all unfiltered
+objects, e.g.:</p>
+<pre class="literal-block">
+(
+    ('some stuff', {'field1__startswith': 'a', 'field2': 'value'}),
+    ('all stuff', {}),
+)
+</pre>
+<p>if only one choice is specified, then that one is applied to the listed
+objects and no choices links are displayed in the html output. This makes
+the field useful if you want to <strong>limit available choices</strong>.</p>
+<p><strong>New in version 0.5:</strong></p>
+<p><tt class="docutils literal"><span class="pre">lookups</span></tt> can also be a callable that returns a sequence of <tt class="docutils literal"><span class="pre">(label,</span> <span class="pre">lookup_dict)</span></tt>
+(this is useful when your lookups must be evaluated at runtime).</p>
+</li>
+<li><p class="first"><em>default_index</em>: the index of the lookup sequence that will be the default
+choice when the field is initially displayed. Set to <em>None</em> if you want the
+widget to start empty;</p>
+</li>
+<li><p class="first"><em>select_related</em>: if not <em>None</em>, the resulting querydict is performed
+using <tt class="docutils literal"><span class="pre">select_related(select_related)</span></tt>, allowing foreign keys
+to be retrieved (e.g. useful when the unicode representation
+of the model objects contains references to foreign keys).</p>
+</li>
+</ul>
+<p>You may also pass all the other <em>args</em> and <em>kwargs</em> accepted by the Django
+<em>Field</em> class.</p>
+</div>
+<div class="section" id="manytomanybyletter">
+<h2><a class="toc-backref" href="#id7">4.2&nbsp;&nbsp;&nbsp;ManyToManyByLetter</a></h2>
+<p>A subclass of <em>AjaxManyToManyField</em> that displays filters based on initials of
+a field of the objects, as they are typed by the user.</p>
+<img alt="m2m_letter.png" src="m2m_letter.png" />
+<p><strong>Usage</strong>:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import ManyToManyByLetter
+# in the form
+related_objects = ManyToManyByLetter(model, field_name=&quot;name&quot;)
+</pre>
+<p><strong>Arguments</strong>:</p>
+<ul class="simple">
+<li><em>model</em>: the related model;</li>
+<li><em>field_name</em>: the name of the field where the initial letters are looked up.</li>
+</ul>
+<p>You may also pass all the other <em>args</em> and <em>kwargs</em> accepted by
+<em>AjaxManyToManyField</em>.</p>
+</div>
+<div class="section" id="manytomanybystatus">
+<h2><a class="toc-backref" href="#id8">4.3&nbsp;&nbsp;&nbsp;ManyToManyByStatus</a></h2>
+<p>A subclass of <em>AjaxManyToManyField</em> that displays filters based on the activation
+status of the objects.</p>
+<img alt="m2m_status.png" src="m2m_status.png" />
+<p><strong>Usage</strong>:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import ManyToManyByStatus
+# in the form
+related_objects = ManyToManyByStatus(model, field_name=&quot;is_active&quot;)
+</pre>
+<p><strong>Arguments</strong>:</p>
+<ul class="simple">
+<li><em>model</em>: the related model;</li>
+<li><em>field_name</em>: the name of the field that manages the activation of the object,</li>
+</ul>
+<p>You may also pass all the other <em>args</em> and <em>kwargs</em> accepted by
+<em>AjaxManyToManyField</em>.</p>
+</div>
+<div class="section" id="manytomanybyrelatedfield">
+<h2><a class="toc-backref" href="#id9">4.4&nbsp;&nbsp;&nbsp;ManyToManyByRelatedField</a></h2>
+<p><strong>New in version 0.5:</strong></p>
+<p>A subclass of <em>AjaxManyToManyField</em> that displays filters based on a related field
+(foreign key or many to many) of the object.</p>
+<p><strong>Usage</strong>:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import ManyToManyByRelatedField
+# in the form
+related_objects = ManyToManyByRelatedField(model, field_name, include_blank=False)
+</pre>
+<p><strong>E.g.</strong>: you have a Band with a lot of Albums, each Album is related
+(using a foreign key or a many to many relation) to one or more Types
+(&quot;ep&quot;, &quot;lp&quot;, &quot;demo&quot;...) and, in the Band form, you want to filter albums by type.:</p>
+<pre class="literal-block">
+albums = ManyToManyByRelatedField(Album, &quot;types&quot;)
+</pre>
+<p><strong>Arguments</strong>:</p>
+<ul class="simple">
+<li><em>model</em>: the related model;</li>
+<li><em>field_name</em>: the name of the field representing the relationship
+between the model and the related model</li>
+<li><em>include_blank</em>: if not <em>False</em> is displayed a NULL choice for
+objects without relation (<tt class="docutils literal"><span class="pre">field_name__isnull=True</span></tt>).
+The label of the choice must be specified as string.</li>
+</ul>
+<p>You may also pass all the other <em>args</em> and <em>kwargs</em> accepted by
+<em>AjaxManyToManyField</em>.</p>
+</div>
+<div class="section" id="ajaxforeignkeyfield">
+<h2><a class="toc-backref" href="#id10">4.5&nbsp;&nbsp;&nbsp;AjaxForeignKeyField</a></h2>
+<p>Base foreign key form field class that displays filter choices using
+jQuery Ajax requests.</p>
+<p><strong>Usage</strong>:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import AjaxForeignKeyField
+# in the form
+related_objects = AjaxForeignKeyField(
+    model, lookups, default_index=0, select_related=None, *args, **kwargs)
+</pre>
+<p>It takes the same arguments as <em>AjaxManyToManyField</em>,
+refer to <em>AjaxManyToManyField</em> documentation for details.</p>
+</div>
+<div class="section" id="foreignkeybyletter">
+<h2><a class="toc-backref" href="#id11">4.6&nbsp;&nbsp;&nbsp;ForeignKeyByLetter</a></h2>
+<p>A subclass of <em>AjaxForeignKeyField</em> that displays filters based on initials of
+a field of the objects, as they are typed by the user.</p>
+<img alt="fk_letter.png" src="fk_letter.png" />
+<p><strong>Usage</strong>:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import ForeignKeyByLetter
+# in the form
+related_objects = ForeignKeyByLetter(model, field_name=&quot;name&quot;)
+</pre>
+<p>It takes the same arguments as <em>ManyToManyByLetter</em>,
+refer to <em>ManyToManyByLetter</em> documentation for details.
+You may also pass all the other <em>args</em> and <em>kwargs</em> accepted by
+<em>AjaxForeignKeyField</em>.</p>
+</div>
+<div class="section" id="foreignkeybystatus">
+<h2><a class="toc-backref" href="#id12">4.7&nbsp;&nbsp;&nbsp;ForeignKeyByStatus</a></h2>
+<p>A subclass of <em>AjaxForeignKeyField</em> that displays filters based on the activation
+status of the objects.</p>
+<img alt="fk_status.png" src="fk_status.png" />
+<p><strong>Usage</strong>:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import ForeignKeyByStatus
+# in the form
+related_objects = ForeignKeyByStatus(model, field_name=&quot;is_active&quot;)
+</pre>
+<p>It takes the same arguments as <em>ManyToManyByStatus</em>,
+refer to <em>ManyToManyByStatus</em> documentation for details.
+You may also pass all the other <em>args</em> and <em>kwargs</em> accepted by
+<em>AjaxForeignKeyField</em>.</p>
+</div>
+<div class="section" id="foreignkeybyrelatedfield">
+<h2><a class="toc-backref" href="#id13">4.8&nbsp;&nbsp;&nbsp;ForeignKeyByRelatedField</a></h2>
+<p><strong>New in version 0.5:</strong></p>
+<p>A subclass of <em>AjaxForeignKeyField</em> that displays filters based on a related field
+(foreign key or many to many) of the object.</p>
+<p><strong>Usage</strong>:</p>
+<pre class="literal-block">
+from ajax_filtered_fields.forms import ForeignKeyByRelatedField
+# in the form
+related_objects = ForeignKeyByRelatedField(model, field_name, include_blank=False)
+</pre>
+<p>It takes the same arguments as <em>ManyToManyByRelatedField</em>,
+refer to <em>ManyToManyByRelatedField</em> documentation for details.
+You may also pass all the other <em>args</em> and <em>kwargs</em> accepted by
+<em>AjaxForeignKeyField</em>.</p>
+</div>
+</div>
+<div class="section" id="settings">
+<h1><a class="toc-backref" href="#id14">5&nbsp;&nbsp;&nbsp;Settings</a></h1>
+<p>Set <tt class="docutils literal"><span class="pre">AJAX_FILTERED_FIELDS_AUTH_DECORATOR</span> <span class="pre">=</span> <span class="pre">None</span></tt> in your project settings
+if you want to allow public access to the <em>views.json_index</em> view. Otherwise
+set it as an auth decorator callable
+(eg: <em>django.contrib.auth.decorators.login_required</em>). <strong>Default</strong> is
+<em>django.contrib.admin.views.decorators.staff_member_required</em>.</p>
+</div>
+<div class="section" id="javascript-events">
+<h1><a class="toc-backref" href="#id15">6&nbsp;&nbsp;&nbsp;Javascript Events</a></h1>
+<p>The <em>ajax_filtered_fields.data_loaded</em> event is triggered (by the selector the
+Ajax Filtered Field refers to) when the ajax request is completed, the json data
+is loaded and the options are fully displayed.
+If you need, you can bind the event easily using <em>jQuery</em>, e.g.:</p>
+<pre class="literal-block">
+$(&quot;#select_id&quot;).bind(ajax_filtered_fields.data_loaded, function(e) {
+    // do the voodoo
+});
+</pre>
+</div>
+</div>
+</body>
+</html>
