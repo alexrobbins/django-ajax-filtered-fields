@@ -38,7 +38,10 @@ def getLookups(lookups):
     The given "lookups" can be a callable object or a sequence.
     Return it as a list.
     """
-    return list(lookups() if callable(lookups) else lookups)
+    if callable(lookups):
+        return list(lookups())
+    else:
+        return lookups
 
 def _getManager(model, select_related):
     if select_related is not None:

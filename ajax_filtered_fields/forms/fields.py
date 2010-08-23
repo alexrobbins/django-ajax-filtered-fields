@@ -72,7 +72,10 @@ class AjaxManyToManyField(forms.ModelMultipleChoiceField):
         # if there is only one lookup used to limit choices, then a real
         # validation over that limited choices is performed
         lookups_list = utils.getLookups(self.lookups)
-        limit_choices_to = {} if len(lookups_list) != 1 else lookups_list[0][1]
+        if len(lookups_list) != 1:
+            limit_choices_to = {}
+        else:
+            limit_choices_to = lookups_list[0][1]
         for val in value:
             try:
                 obj = self.model.objects.get(pk=val, **limit_choices_to)
@@ -116,7 +119,10 @@ class AjaxForeignKeyField(forms.ModelChoiceField):
         # if there is only one lookup used to limit choices, then a real
         # validation over that limited choices is performed
         lookups_list = utils.getLookups(self.lookups)
-        limit_choices_to = {} if len(lookups_list) != 1 else lookups_list[0][1]
+        if len(lookups_list) != 1:
+            limit_choices_to = {}
+        else:
+            limit_choices_to = lookups_list[0][1]
         try:
             key = self.to_field_name or 'pk'
             limit_choices_to[key] = value

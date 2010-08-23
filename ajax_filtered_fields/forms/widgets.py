@@ -125,7 +125,7 @@ class FilteredSelect(forms.Select):
             "parent_output": parent_output,
             "name": name,
             "element_id": self._element_id, 
-            "value": "" if value is None else value,
+            "value": value is None and "" or value,
             "admin_media_prefix": settings.ADMIN_MEDIA_PREFIX,
             }
                             
@@ -165,4 +165,4 @@ class FilteredSelect(forms.Select):
             """ % mapping
             
         return mark_safe(output)
-        
+
