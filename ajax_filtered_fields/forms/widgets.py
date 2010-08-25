@@ -117,6 +117,9 @@ class FilteredSelect(forms.Select):
         parent_output = super(FilteredSelect, self
             ).render("dummy-%s" % name, value, attrs, choices)
         
+        if value is None:
+            value = ""
+
         # output
         mapping = {
             "lookups_output": lookups_output,
@@ -125,7 +128,7 @@ class FilteredSelect(forms.Select):
             "parent_output": parent_output,
             "name": name,
             "element_id": self._element_id, 
-            "value": value is None and "" or value,
+            "value": value,
             "admin_media_prefix": settings.ADMIN_MEDIA_PREFIX,
             }
                             
